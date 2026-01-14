@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
-:root {
+/* THEME 1: AMBER */
+:root, [data-theme="amber"] {
+  --color-primary: #ffc300;
+  --color-secondary: #2255a4;
+  --color-accent: #ff4d00;
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --border: #334155;
+}
+
+/* THEME 2: ROYAL BLUE */
+[data-theme="blue"] {
+  --color-primary: #2255a4;
+  --color-secondary: #ffc300;
+  --color-accent: #ff4d00;
+  --background: #0a192f;
+  --foreground: #e6f1ff;
+  --card: #112240;
+  --border: #233554;
+}
+
+/* THEME 3: VIBRANT ORANGE */
+[data-theme="orange"] {
+  --color-primary: #ff4d00;
+  --color-secondary: #171717;
+  --color-accent: #ffc300;
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #111111;
+  --border: #222222;
+}
+
+/* THEME 4: CLEAN LIGHT */
+[data-theme="light"] {
+  --color-primary: #2255a4;
+  --color-secondary: #ffc300;
+  --color-accent: #ff4d00;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --card: #f1f5f9;
+  --border: #e2e8f0;
 }
 
 @theme inline {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-card: var(--card);
+  --color-border: var(--border);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #000;
+}
+
+/* Add this to your globals.css */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary); /* Uses your active theme color! */
 }
