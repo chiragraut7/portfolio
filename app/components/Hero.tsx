@@ -4,10 +4,9 @@ import { FiArrowRight, FiDownload } from 'react-icons/fi';
 
 export default function Hero() {
   return (
-    // Changed bg-[#0a0f1a] to bg-background
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-background transition-colors duration-500">
       
-      {/* Background Decorative Elements - Subtle enough to work in light and dark */}
+      {/* Background Decorative Blurs */}
       <div className="absolute top-0 -left-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[150px] pointer-events-none" />
 
@@ -23,15 +22,13 @@ export default function Hero() {
             Project Manager & UI/UX Specialist
           </span>
           
-          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-[0.85] mb-8 uppercase italic text-foreground">
+          <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-black tracking-tighter leading-[0.85] mb-8 uppercase italic text-foreground">
             CHIRAG <br /> 
-            {/* Stroke now uses the theme-aware border variable */}
             <span className="text-transparent" style={{ WebkitTextStroke: "1px var(--color-border)" }}>
               RAUT
             </span>
           </h1>
 
-          {/* text-white/50 to text-foreground/50 */}
           <p className="text-lg md:text-xl text-foreground/50 max-w-lg mb-12 leading-relaxed font-medium">
             Strategic design leader delivering enterprise-level digital ecosystems. 
             Transforming complex business logic into intuitive user experiences.
@@ -40,7 +37,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-5">
             <a 
               href="#contact" 
-              className="px-10 py-5 bg-primary text-background font-black rounded-2xl flex items-center gap-3 hover:scale-105 transition-allshadow-lg"
+              className="px-10 py-5 bg-primary text-background font-black rounded-2xl flex items-center gap-3 hover:scale-105 transition-all shadow-lg"
             >
               LET'S TALK <FiArrowRight />
             </a>
@@ -53,31 +50,32 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Profile Visual */}
+        {/* Profile Visual - Optimized for your specific photo */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }} 
           animate={{ opacity: 1, scale: 1 }} 
           transition={{ duration: 1, ease: "easeOut" }}
           className="relative justify-self-center lg:justify-self-end group"
         >
-          {/* Main Image Container - bg-white/[0.02] to bg-foreground/5 */}
-          <div className="relative rounded-[4rem] overflow-hidden border border-border p-3 bg-foreground/5 backdrop-blur-3xlshadow-lg">
-            {/* Inner container bg-card */}
+          {/* Main Image container with your uploaded photo */}
+          <div className="relative rounded-[4rem] overflow-hidden border border-border p-3 bg-foreground/5 backdrop-blur-3xl shadow-2xl">
             <div className="relative rounded-[3.2rem] overflow-hidden bg-card">
               <img 
-                src="/images/profile.jpg" 
+                src="/profile_1.png" // Fixed path based on your prompt
                 alt="Chirag Raut" 
-                className="w-[320px] h-[480px] md:w-[380px] md:h-[550px] object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out scale-110 group-hover:scale-100" 
+                className="w-[320px] h-[450px] md:w-[450px] md:h-[600px] object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out scale-105 group-hover:scale-100" 
               />
+              {/* Subtle Gradient Overlay to blend with the card background */}
+              <div className="absolute inset-0 bg-gradient-to-t from-card/40 to-transparent pointer-events-none" />
             </div>
           </div>
 
-          {/* Floating Experience Badge - text-background for readability on accent */}
+          {/* Experience Badge */}
           <motion.div 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="absolute -bottom-8 -left-8 bg-primary p-8 rounded-[2.5rem]shadow-lg text-background"
+            className="absolute -bottom-8 -left-8 bg-primary p-8 rounded-[2.5rem] shadow-2xl text-background z-20"
           >
             <div className="text-5xl font-black leading-none italic tracking-tighter">14+</div>
             <div className="text-[10px] uppercase font-black tracking-widest opacity-70 leading-none mt-2">
@@ -85,7 +83,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Subtle Back Glow */}
+          {/* Interaction Glow */}
           <div className="absolute -inset-4 bg-primary/20 rounded-[5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none -z-10" />
         </motion.div>
       </div>
