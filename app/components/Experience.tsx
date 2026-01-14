@@ -55,24 +55,26 @@ export default function Experience() {
   });
 
   return (
-    <section ref={containerRef} className="py-32 bg-[#0a0f1a] relative px-6 overflow-hidden">
+    // Changed bg-[#0a0f1a] to bg-background
+    <section ref={containerRef} className="py-32 bg-background relative px-6 overflow-hidden transition-colors duration-500">
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-24 space-y-4">
           <h2 className="text-primary font-mono text-[10px] tracking-[0.5em] uppercase font-bold">The Timeline</h2>
-          <p className="text-5xl md:text-8xl font-black tracking-tighter uppercase italic text-white leading-none">
+          <p className="text-5xl md:text-8xl font-black tracking-tighter uppercase italic text-foreground leading-none">
             Professional <br />
-            <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.4)" }}>Evolution</span>
+            {/* Stroke now uses theme border variable */}
+            <span className="text-transparent" style={{ WebkitTextStroke: "1px var(--color-border)" }}>Evolution</span>
           </p>
         </div>
 
         <div className="relative">
-          {/* Animated Vertical Line (Now thinner and more subtle) */}
+          {/* Animated Vertical Line - Uses border color for subtle look */}
           <motion.div 
             style={{ scaleY }}
-            className="absolute left-0 md:left-1/2 top-0 w-[1px] h-full bg-white/10 origin-top hidden md:block"
+            className="absolute left-0 md:left-1/2 top-0 w-[1px] h-full bg-border origin-top hidden md:block"
           />
 
           <div className="space-y-12 md:space-y-0">
@@ -87,11 +89,11 @@ export default function Experience() {
                   item.align === "right" ? "md:flex-row-reverse" : ""
                 }`}
               >
-                {/* Center Node (Static Circle) */}
-                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#0a0f1a] border border-primary z-20 shadow-[0_0_15px_rgba(var(--color-primary-rgb),0.5)]" />
+                {/* Center Node (Static Circle) - Uses background color to "cut" the line */}
+                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-background border border-primary z-20 shadow-[0_0_15px_rgba(var(--color-primary-rgb),0.5)]" />
 
-                {/* Content Card */}
-                <div className="w-full md:w-[47%] bg-[#111827] border border-white/5 p-8 md:p-12 rounded-[3rem] hover:border-primary/30 transition-all duration-500 group relative overflow-hidden shadow-2xl">
+                {/* Content Card - Changed bg to bg-card and border to border-border */}
+                <div className="w-full md:w-[47%] bg-card border border-border p-8 md:p-12 rounded-[3rem] hover:border-primary/30 transition-all duration-500 group relative overflow-hiddenshadow-lg">
                   
                   {/* Static Gradient Background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50 pointer-events-none" />
@@ -99,18 +101,18 @@ export default function Experience() {
                   <div className="relative z-10">
                     <div className="flex justify-between items-start mb-6">
                       <span className="text-primary font-mono text-[10px] tracking-widest uppercase font-bold">{item.year}</span>
-                      <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[10px] text-white/20 group-hover:border-primary/50 group-hover:text-primary transition-colors">
+                      <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-[10px] text-foreground/20 group-hover:border-primary/50 group-hover:text-primary transition-colors">
                         0{i + 1}
                       </div>
                     </div>
 
-                    <h3 className="text-3xl font-black text-white mb-1 uppercase tracking-tighter italic leading-none">{item.role}</h3>
-                    <h4 className="text-white/30 font-bold text-xs mb-8 uppercase tracking-widest">{item.company}</h4>
+                    <h3 className="text-3xl font-black text-foreground mb-1 uppercase tracking-tighter italic leading-none">{item.role}</h3>
+                    <h4 className="text-foreground/30 font-bold text-xs mb-8 uppercase tracking-widest">{item.company}</h4>
                     
                     <ul className="space-y-4 mb-10">
                       {item.impact.map((point, idx) => (
-                        <li key={idx} className="flex gap-4 items-start text-sm leading-relaxed text-white/50 group-hover:text-white/70 transition-colors">
-                          <span className="w-1 h-1 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <li key={idx} className="flex gap-4 items-start text-sm leading-relaxed text-foreground/50 group-hover:text-foreground/70 transition-colors">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                           {point}
                         </li>
                       ))}
@@ -118,7 +120,7 @@ export default function Experience() {
                     
                     <div className="flex flex-wrap gap-2">
                       {item.skills.map((skill, idx) => (
-                        <span key={idx} className="px-4 py-1.5 bg-white/5 rounded-full text-[9px] font-bold text-white/30 border border-white/5 uppercase tracking-tighter">
+                        <span key={idx} className="px-4 py-1.5 bg-foreground/5 rounded-full text-[9px] font-bold text-foreground/30 border border-border uppercase tracking-tighter transition-colors">
                           {skill}
                         </span>
                       ))}

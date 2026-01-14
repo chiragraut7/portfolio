@@ -7,12 +7,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Handles shadow intensity on scroll and active section detection
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Detect which section is in view
       const sections = ["home", "about", "projects", "experience", "contact"];
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -44,25 +42,27 @@ export default function Navbar() {
     >
       <nav className={`max-w-5xl mx-auto flex items-center justify-between transition-all duration-500 border rounded-[2rem] p-2 ${
         scrolled 
-          ? "bg-card/80 backdrop-blur-xl border-border shadow-2xl" 
+          ? "bg-card/80 backdrop-blur-xl border-bordershadow-lg" 
           : "bg-transparent border-transparent"
       }`}>
         
-        {/* Branding with Animated Dot */}
+        {/* Branding - Added text-foreground */}
         <div className="pl-6 flex items-center">
-          <a href="#home" className="text-2xl font-black tracking-tighter group">
-            C<span className="text-primary transition-all duration-300 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_#ff4d00]">.</span>RAUT
+          <a href="#home" className="text-2xl font-black tracking-tighter group text-foreground">
+            C<span className="text-primary transition-all duration-300 group-hover:text-accent">.</span>RAUT
           </a>
         </div>
 
-        {/* Desktop Links with Active Indicator */}
+        {/* Desktop Links - Replaced text-gray-500 with text-foreground/50 */}
         <div className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               className={`relative px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors duration-300 ${
-                activeSection === link.id ? "text-primary" : "text-gray-500 hover:text-foreground"
+                activeSection === link.id 
+                  ? "text-primary" 
+                  : "text-foreground/50 hover:text-foreground"
               }`}
             >
               {link.name}
@@ -77,13 +77,14 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Multi-Theme Compatible Actions */}
+        {/* Multi-Theme Actions */}
         <div className="flex items-center gap-3">
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="/resume.pdf"
-            className="hidden md:block px-6 py-3 bg-secondary text-white text-[10px] font-black rounded-xl hover:bg-accent hover:shadow-[0_0_20px_rgba(255,77,0,0.4)] transition-all uppercase tracking-widest"
+            // Replaced bg-secondary with bg-primary and text-white with text-background
+            className="hidden md:block px-6 py-3 bg-primary text-background text-[10px] font-black rounded-xl hover:opacity-90 transition-all uppercase tracking-widest shadow-lg shadow-primary/20"
           >
             Hire Me 
           </motion.a>
