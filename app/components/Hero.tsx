@@ -1,91 +1,103 @@
 "use client";
-import { motion } from 'framer-motion';
-import { FiArrowRight, FiDownload } from 'react-icons/fi';
+import { motion } from "framer-motion";
+import { FiArrowRight, FiDownload, FiLayers, FiLayout, FiTarget } from "react-icons/fi";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-background transition-colors duration-500">
+    <section className="relative min-h-screen flex items-center bg-background px-6 pt-24 overflow-hidden">
+      {/* Dynamic Background Noise/Grain */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       
-      {/* Background Decorative Blurs */}
-      <div className="absolute top-0 -left-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-8 items-center">
         
-        {/* Text Content */}
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }} 
-          animate={{ opacity: 1, x: 0 }} 
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <span className="text-primary font-mono text-[10px] tracking-[0.5em] uppercase mb-6 block font-bold">
-            Project Manager & UI/UX Specialist
-          </span>
-          
-          <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-black tracking-tighter leading-[0.85] mb-8 uppercase italic text-foreground">
-            CHIRAG <br /> 
-            <span className="text-transparent" style={{ WebkitTextStroke: "1px var(--color-border)" }}>
-              RAUT
-            </span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-foreground/50 max-w-lg mb-12 leading-relaxed font-medium">
-            Strategic design leader delivering enterprise-level digital ecosystems. 
-            Transforming complex business logic into intuitive user experiences.
-          </p>
-
-          <div className="flex flex-wrap gap-5">
-            <a 
-              href="#contact" 
-              className="px-10 py-5 bg-primary text-background font-black rounded-2xl flex items-center gap-3 hover:scale-105 transition-all shadow-lg"
-            >
-              LET'S TALK <FiArrowRight />
-            </a>
-            <a 
-              href="/cv.pdf" 
-              className="px-10 py-5 bg-foreground/5 text-foreground font-bold rounded-2xl border border-border flex items-center gap-3 hover:bg-foreground/10 transition-all"
-            >
-              GET CV <FiDownload />
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Profile Visual - Optimized for your specific photo */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }} 
-          animate={{ opacity: 1, scale: 1 }} 
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="relative justify-self-center lg:justify-self-end group"
-        >
-          {/* Main Image container with your uploaded photo */}
-          <div className="relative rounded-[4rem] overflow-hidden border border-border p-3 bg-foreground/5 backdrop-blur-3xl shadow-2xl">
-            <div className="relative rounded-[3.2rem] overflow-hidden bg-card">
-              <img 
-                src="/profile_1.png" // Fixed path based on your prompt
-                alt="Chirag Raut" 
-                className="w-[320px] h-[450px] md:w-[450px] md:h-[600px] object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out scale-105 group-hover:scale-100" 
-              />
-              {/* Subtle Gradient Overlay to blend with the card background */}
-              <div className="absolute inset-0 bg-gradient-to-t from-card/40 to-transparent pointer-events-none" />
-            </div>
-          </div>
-
-          {/* Experience Badge */}
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute -bottom-8 -left-8 bg-primary p-8 rounded-[2.5rem] shadow-2xl text-background z-20"
+        {/* LEFT COLUMN: Typography & Action (7 Cols) */}
+        <div className="lg:col-span-7 space-y-8 z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="text-5xl font-black leading-none italic tracking-tighter">14+</div>
-            <div className="text-[10px] uppercase font-black tracking-widest opacity-70 leading-none mt-2">
-              Years of <br /> Mastery
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.3em]">
+              Based in India • Open to Global Roles
+            </span>
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-7xl md:text-[11rem] font-black leading-[0.8] tracking-tighter uppercase italic text-foreground"
+          >
+            CHIRAG <br />
+            <span className="text-transparent" style={{ WebkitTextStroke: "1.5px var(--color-border)" }}>RAUT</span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-xl text-foreground/60 max-w-xl leading-relaxed font-medium"
+          >
+            A Strategic Design Leader with 14+ years of experience blending 
+            <span className="text-foreground"> Project Management</span> with 
+            <span className="text-primary"> High-Fidelity UI/UX</span>. I build systems that scale.
+          </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-wrap gap-4"
+          >
+            <button className="px-8 py-4 bg-primary text-background font-black rounded-xl hover:scale-105 transition-all shadow-xl flex items-center gap-3">
+              VIEW PROJECTS <FiArrowRight />
+            </button>
+            <button className="px-8 py-4 bg-card border border-border text-foreground font-bold rounded-xl hover:bg-foreground/5 transition-all flex items-center gap-3">
+              DOWNLOAD CV <FiDownload />
+            </button>
+          </motion.div>
+        </div>
+
+        {/* RIGHT COLUMN: The Visual Bento (5 Cols) */}
+        <div className="lg:col-span-5 relative">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="relative z-10"
+          >
+            {/* The Photo Frame */}
+            <div className="relative rounded-[3rem] overflow-hidden border border-border bg-card p-2 shadow-2xl group">
+              <div className="rounded-[2.5rem] overflow-hidden relative">
+                <img 
+                  src="/profile.png" 
+                  alt="Chirag Raut" 
+                  className="w-full h-[600px] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              </div>
+
+              {/* Floating Stat inside the Bento */}
+              <div className="absolute bottom-6 left-6 right-6 p-6 bg-background/60 backdrop-blur-xl border border-border rounded-3xl">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-primary font-black text-3xl italic">14+ YRS</p>
+                    <p className="text-[9px] uppercase font-bold tracking-widest opacity-50 text-foreground">Experience Scale</p>
+                  </div>
+                  <div className="h-10 w-[1px] bg-border" />
+                  <div>
+                    <p className="text-foreground font-black text-3xl italic">50+</p>
+                    <p className="text-[9px] uppercase font-bold tracking-widest opacity-50 text-foreground">Projects Delivered</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Interaction Glow */}
-          <div className="absolute -inset-4 bg-primary/20 rounded-[5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none -z-10" />
-        </motion.div>
+          {/* Background Decorative Rings */}
+          <div className="absolute -top-10 -right-10 w-64 h-64 border border-primary/10 rounded-full animate-pulse" />
+          <div className="absolute -bottom-20 -left-20 w-96 h-96 border border-border/20 rounded-full" />
+        </div>
       </div>
     </section>
   );
